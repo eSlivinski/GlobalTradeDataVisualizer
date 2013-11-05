@@ -1,0 +1,268 @@
+body {
+   background-color:#333;
+   padding-top: 0;
+   padding-bottom: 0;
+   padding-left: 0;
+   padding-right: 0;
+   font-family: "Open Sans", Sans-Serif;
+}
+h2{
+
+}
+h4{
+}
+h5{
+  letter-spacing: normal;
+
+}
+}
+.navbar {
+  max-height: 40px;
+  overflow: visible;
+  padding-top: 6px;
+  padding-bottom: 0;
+  margin-left:10px;
+  margin-right:0px;
+  width:415px;
+}
+.container-fluid {
+  padding-right:0;
+  padding-left: 0;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+}
+.modal {
+  left:0;
+  right:0;
+
+  max-width: 900px;
+  position: absolute;
+  margin:auto;
+}
+
+#modalShare {
+    margin-left:-200px;
+    height: 300px;
+ }
+
+@media (max-width: 767px) {
+    #modalShare {
+        width: auto;
+        margin-left: auto;
+    }
+}
+
+#modalShareBody {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#panelGuest2{
+    width: 100%;
+    float:left;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
+#panelGuest{
+    width: 30%;
+    float:left;
+    overflow-x: hidden;
+    
+}
+#panelDetail{
+    float:left;
+    border-left:solid #ff920a 2px;
+    padding-left: 5px;
+}
+.leaflet-right {
+  right:40px;
+}
+#map {
+  height:100%;
+  display:inline;
+  position: absolute;
+}
+#sidebar {
+  position: fixed;
+  opacity:0.6;
+  right:0;
+  top:0;
+  bottom:0;
+  background-color: #0D4D8C;
+  width:40px;
+  height:100%;
+  box-shadow: -3px 0 5px #fff;
+  z-index: 3000;
+}
+.zoomControl {
+  height:40px;
+  width:40px;
+  background-color: black;
+  display:inline-block;
+  text-align: center;
+  margin-top:0px;
+}
+.zoomControl > a:hover {
+  color: #fff;
+}
+.zoomButton {
+  font:bold 39px/41px Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:#aaa;
+}
+#zoomOut {
+  font:bold 53px/32px Arial, Helvetica, sans-serif;
+}
+#out {
+  border-top:2px solid #777;
+}
+.button {
+  height:40px;
+  width:100%;
+  display:inline-block;
+  text-align: center;
+  float:left;
+}
+.button#home {
+  background-color: #ED811D;
+}
+.button#info {
+  background-color: #459973;
+}
+.button#legend {
+  background-color: #1E2647;
+}
+.btn {
+  padding: 4px 8px;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  border-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 0;
+  -webkit border-radius: 0;
+  -moz border-radius: 0;
+}
+#collapse > a {
+  color: #777;
+}
+.btn#home {
+  margin-top:70px;
+  background-color: #ED811D;
+}
+.btn > a:hover {
+  color: #fff;
+}
+.btn > a > i:hover {
+  color: #fff;
+}
+.btn#info {
+  margin-top:0;
+  background-color: #459973;
+
+}
+.btn#layers {
+  margin-top:0;
+  background-color: #aed1cb;
+}
+.btn#success {
+  margin-top:0;
+}
+.btn#collapse {
+  display:none;
+  padding: 6px 9px;
+  margin-top:-1px;
+  margin-left: 30px;
+  background-color: black;
+  float:right;
+}
+#collapseMenu {
+  background-color:black;
+  width:100%;
+  display:none;
+}
+.nav-list > li > a {
+  text-shadow: none;
+}
+li > a {
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+}
+.legend {
+  line-height: 20px;
+  color: #555;
+  background-color:white;
+  padding:10px;
+  opacity: 0.7;
+}
+#j {
+background-image: linear-gradient(right, #084594 50%, #99000d 50%);
+background-image: -o-linear-gradient(right, #084594 50%, #99000d 50%);
+background-image: -moz-linear-gradient(right, #084594 50%, #99000d 50%);
+background-image: -webkit-linear-gradient(right, #084594 50%, #99000d 50%);
+background-image: -ms-linear-gradient(right, #084594 50%, #99000d 50%);
+}
+.legend k {
+  border-radius: 50%;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.9;
+  border-top: 1px solid gray;
+}
+i {
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: 0;
+}
+
+
+#footerInner {
+  width: 258px;
+  margin: 0 auto;
+  margin-top: -12px;
+}
+#footerText {
+  color: #111;
+  font-size: 10px;
+}
+.modal-footer {
+  text-align: center;
+}
+@media screen and (max-width: 1280px) {
+  #out {
+    border-top:2px solid #777;
+  }
+}
+@media screen and (max-width: 550px) {
+  #sidebar {
+    width:100%;
+    height:40px;
+    box-shadow: 0 3px 5px #fff;
+  }
+  .btn#info {
+    display:none;
+  }
+  .btn#home {
+    display:none;
+  }
+  .btn#layers {
+    display:none;
+  }
+  .btn#collapse {
+    display: inline-block;
+  }
+  #out {
+    margin-left:-4px;
+    border-top:0;
+    border-left:2px solid #777;
+  }
+  #in {
+    margin-left:1px;
+  }
+}

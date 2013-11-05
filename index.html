@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>State Exports</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=9'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Andika' rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='bootstrap/css/bootstrap.css' rel='stylesheet' type='text/css' />
+    <link href='css/font-awesome.min.css' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+    <link href="css/overcast/jquery-ui-1.10.2.custom.min.css" rel="stylesheet" type="text/css"/>
+    <link href='css/common.css' rel='stylesheet' type='text/css' />
+    <link href='css/main.css' rel='stylesheet' type='text/css' />
+
+  </head>
+  <body>
+  <div class="container-fluid">
+    <div id="map"></div>
+    <div id="sidebar">
+      <div class="zoomControl">
+        <a href="#" title="Zoom In" class="zoomButton" id="zoomIn">+</a>
+      </div>
+      <div class="zoomControl" id="out">
+        <a href="#" title="Zoom Out" class="zoomButton" id="zoomOut">-</a>
+      </div>
+      <div class="btn" id="home">
+        <a href="http://midamericafreight.org" target="_blank" title="Home" id="home"><i class="icon-home icon-2x"></i></a>
+      </div>
+      <div class="btn" id="info">
+        <a href="#mapInfo" title="Information" id="info" data-toggle="modal"><i class="icon-info-sign icon-2x"></i></a>
+      </div>
+      <div class="btn" id="layers">
+        <a href="#stateChooser" title="Layers" id="layers" data-toggle="modal"><i class="icon-globe icon-2x"></i></a>
+      </div>
+      <div class="btn" id="collapse">
+        <a href="#" title="More"><i class="icon-reorder icon-2x"></i></a>
+      </div>
+      <div id="collapseMenu">
+        <ul class="nav nav-list">
+          <li><a href="#"><i class="icon-home icon-large"></i> Home</a></li>
+          <li><a href="#mapInfo" title="Information" id="info" data-toggle="modal"><i class="icon-info-sign icon-large"></i> Information</a></li>
+          <li><a href="#" id="legendButton"><i class="icon-key icon-large"></i> Show Legend & Controls</a></li>
+          <li><a href="#layerPanel" title="Layers" id="layers" data-toggle="modal"><i class="icon-globe icon-large"></i> Layers</a></li>
+        </ul>
+    </div>
+
+  </div><!--/.fluid-container-->
+  <div class="modal hide fade" id="mapInfo">
+    <div class="modal-header">
+      
+      <h2>About the data:</h2> 
+    </div>
+    <div class="modal-body">
+      
+  
+
+      <div class="container-fluid span10">
+            <p class="lead">USA Trade® Online, created in partnership with the US Census Bureau, is a primary source for US import and export merchandise data. Current and cumulative statistics are available on a monthly, annual, and year-to-date basis. Trade statistics are reported using either the Harmonized System (HS) up to the 10-digit level and/or the NAICS commodity classification codes up to the 6-digit level.</p>
+
+            <div class="span9-offset1">
+            <h4>The following trade data is available:</h4>
+
+          <ul class="span8-offset1">
+            <li>Quantity, Value</li>
+            <li>Port Level Detail</li>
+            <li>Method of Transportation</li>
+            <li>Shipping Weight</li>
+            <li>Market Level Ranking</li>
+          </ul>
+        
+
+      <dl class="dl-horizontal container-fluid span12">
+        <dt class= "span6">Source for interactive map: </dt>
+          <dd class= "span6"><a href="http://data.usatradeonline.gov/usatrade/Browse/BrowseTables.aspx">US Trade Online</a>
+          </dd>
+        <dt class= "span6">For more information on trade data: </dt>
+          <dd class= "span6"><a href='http://export.gov/tradedata/index.asp</p>'>USA.gov</a>
+          </dd></dl>
+          </div>
+
+        </div>
+  </div>
+
+    <div class="modal-footer">
+      <img src='css/img/MAFC_logo_Small.png' alt='logo' height='75 px' width = '162px'</>
+      <img src= 'css/img/CFIRE-Logo-Transparent.png' alt='CFIRE'height='120 px' width = '53 px'><br>
+      <a id="footerText" href="http://midamericafreight.org">© Mid America Freight Coalition, 2013</a>
+    </div>
+  </div>
+
+  
+
+  <div class="modal hide fade" id="stateChooser">
+    <div class="modal-header">
+    <h2 class='small'>Global Trade Data Visualizer</h2>
+      
+    </div>
+    
+
+    <div id="modalShareBody" class="modal-body">
+      <p class="lead">The Mid-America Freight Coalition states accounted for X percent of US imports and X percent of US exports in 2012. This map shows each MAFC state’s trade partners and the value of import and export commodities traded annually from 2008-2012. Discover emerging markets and monitor trade trends by selecting the year-over-year percent change option.</p>
+        <div id="panelGuest" class="panel">
+          <h4>1. Select Data Type: </h4>
+<!-- 
+          <div class="form-group">
+          <select id= "datachooser" class= "form-control">
+            
+            <option value="exports" 
+              colors="['#EDF8E9','#C7E9C0', '#A1D99B', '#74C476', '#41AB5D','#238B45', '#005A32']"
+              color-1="#EDF8E9"
+              color-2="#C7E9C0"
+              color-3="#A1D99B"
+              color-4="#74C476"
+              color-5="#41AB5D"
+              color-6="#238B45"
+              color-7="#005A32"
+
+
+              round="1000"
+              selected="selected"
+              >Exports</option>
+
+
+            <option 
+              >Imports</option>
+
+
+            <option value="exportsChange"
+              
+              >Exports-% Change</option>
+            
+
+            <option value="importsChange"
+              color-1="#084594"
+              color-2="#99000d"
+              color-3="#084594"
+              color-4="#99000d"
+              color-5="#084594"
+              color-6="#99000d"
+              color-7="#084594"
+              round="100"
+              >Imports-% Change</option>
+
+            <option value="tradeBalance"
+              color-1="#084594"
+              color-2="#99000d"
+              color-3="#084594"
+              color-4="#99000d"
+              color-5="#084594"
+              color-6="#99000d"
+              color-7="#084594"
+              round="100"
+              >Trade Balance</option></select>
+        </div> -->
+<div id= "datachooser" class= "form-control">
+  <label class="radio">
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="imports" string="Imports by Value"
+              
+              color-1="#fcbba1"
+              color-2="#fc9272"
+              color-3="#fb6a4a"
+              color-4="#ef3b2c"
+              color-5="#cb181d"
+              color-6="#99000d"
+              color-7="#67000D"
+              round="1000"checked>
+      Imports by Value
+    </label>
+
+  <label class="radio">
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="importsChange" string="Imports - Percent Change"
+              color-1="#084594"
+              color-2="#99000d"
+              color-3="#084594"
+              color-4="#99000d"
+              color-5="#084594"
+              color-6="#99000d"
+              color-7="#084594"
+              round="100">
+    Imports - Percent Change
+    </label>
+
+  <label class="radio">
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="exports" string = "Exports by Value"
+              color-1="#EDF8E9"
+              color-2="#C7E9C0"
+              color-3="#A1D99B"
+              color-4="#74C476"
+              color-5="#41AB5D"
+              color-6="#238B45"
+              color-7="#005A32"
+              round="1000">
+    Exports by Value
+    </label>
+
+  <label class="radio">
+    <input type="radio" name="optionsRadios" id="optionsRadios4" value="exportsChange" string="Exports - Percent Change"
+              color-1="#084594"
+              color-2="#99000d"
+              color-3="#084594"
+              color-4="#99000d"
+              color-5="#084594"
+              color-6="#99000d"
+              color-7="#084594"
+              round="100">
+    Exports - Percent Change
+    </label>
+
+  <label class="radio">
+    <input type="radio" name="optionsRadios" id="optionsRadios5" value="tradeBalance" string= "Trade Balance"
+              color-1="#084594"
+              color-2="#99000d"
+              color-3="#084594"
+              color-4="#99000d"
+              color-5="#084594"
+              color-6="#99000d"
+              color-7="#084594"
+              round="100">
+    Trade Balance
+    </label>
+</div>
+
+
+            
+        </div>
+
+        <div id="panelDetail" class="panel">
+          <h4>2. Select a State</h4>
+          <div id="stateChooserMap" align= "center"></div>
+        </div>
+      </div>
+    <div class="modal-footer">
+      <img src='css/img/MAFC_logo_Small.png' alt='logo' height='75 px' width = '162px'</>&nbsp;&nbsp;&nbsp;
+      <img src= 'css/img/CFIRE-Logo-Transparent.png' alt='CFIRE'height='120 px' width = '53 px'><br>
+      <a id="footerText" href="http://midamericafreight.org">© Mid America Freight Coalition, 2013</a>
+    </div>
+  </div>    
+<!--                         <table>
+            
+        
+        
+
+
+
+           
+        </div>
+
+
+        
+    </div>
+      
+
+      
+    
+        
+          -->
+            
+        
+
+
+
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="bootstrap/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src='bootstrap/js/bootstrap.min.js'></script>
+  <script src="js/common.js"></script>
+  <script src="js/makeChart.js"></script>
+  <script src="js/makeLegend.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.6/leaflet.js"></script>
+  
+
+  <!--<script src="js/topojson.js"></script>-->
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script type="text/javascript" src="leaflet-ajax-master/dist/leaflet.ajax.js"></script>
+  <script src='js/simple_statistics.js'></script>
+  
+  <script type="text/javascript" src="js/main.js"></script>
+
+  </body>
+</html>

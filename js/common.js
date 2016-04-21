@@ -1,7 +1,7 @@
 function initMap() {
   map = new L.Map('map', {
     //center: new L.LatLng(15, 0),
-    maxZoom:5,
+    maxZoom: 5,
     minZoom: 1,
     layers: [centroidLayerGroup],
     zoomControl:false,
@@ -13,7 +13,7 @@ function initMap() {
 
 
 //Defines the the basemap and adds it to the map
-  var mapbox = new L.TileLayer("http://{s}.tile.cloudmade.com/77a6ff5a162e44c2a9152755795c07bf/105047/256/{z}/{x}/{y}.png",{
+  var mapbox = new L.TileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",{
     attribution: " | © Mid America Freight Coalition, 2013"
   }).addTo(map);
  

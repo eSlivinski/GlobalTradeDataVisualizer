@@ -126,7 +126,7 @@ function drawCircles(){
 
 
   // Load the centroid geometry via TopoJSON
-  $.getJSON('js/centroids.json', function (data) {
+  $.getJSON('./js/centroids.json', function (data) {
     var input_geojson = topojson.feature(data, data.objects.country_centroids);
 
     centroidLayer.addData(input_geojson)
